@@ -1,0 +1,10 @@
+2019-09-23 14:06:42|dotnet-912|INFO|ASF|InitASF() ArchiSteamFarm V4.0.4.2 (generic/268a9edf-4b7d-4794-bbcc-cd9bb8982246 | Microsoft Windows 10.0.17763)
+2019-09-23 14:06:42|dotnet-912|INFO|ASF|InitGlobalDatabaseAndServices() It looks like it's your first launch of the program, welcome!
+2019-09-23 14:06:52|dotnet-912|WARN|ASF|InitGlobalDatabaseAndServices() Please review our privacy policy section on the wiki if you're concerned about what ASF is in fact doing!
+2019-09-23 14:06:57|dotnet-912|INFO|ASF|UpdateAndRestart() ASF will automatically check for new versions every 1 day.
+2019-09-23 14:06:57|dotnet-912|INFO|ASF|Update() Checking for new version...
+2019-09-23 14:06:59|dotnet-912|INFO|ASF|Update() Local version: 4.0.4.2 | Remote version: 4.0.4.2
+2019-09-23 14:06:59|dotnet-912|WARN|ASF|StartInteractiveConsole() Interactive console is not available due to missing SteamOwnerID config property.
+2019-09-23 14:06:59|dotnet-912|INFO|ASF|RegisterBots() Initializing SteamDirectory...
+2019-09-23 14:07:00|dotnet-912|INFO|ASF|RegisterBots() Success!
+2019-09-23 14:07:00|dotnet-912|WARN|ASF|RegisterBots() No bots are defined. Did you forget to configure your ASF?

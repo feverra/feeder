@@ -1,0 +1,11 @@
+C:\Users\pill\source\repos\feeder\feeder\bin\Release\netcoreapp2.2\feeder.deps.json
+C:\Users\pill\source\repos\feeder\feeder\bin\Release\netcoreapp2.2\feeder.runtimeconfig.json
+C:\Users\pill\source\repos\feeder\feeder\bin\Release\netcoreapp2.2\feeder.runtimeconfig.dev.json
+C:\Users\pill\source\repos\feeder\feeder\bin\Release\netcoreapp2.2\feeder.dll
+C:\Users\pill\source\repos\feeder\feeder\bin\Release\netcoreapp2.2\feeder.pdb
+C:\Users\pill\source\repos\feeder\feeder\obj\Release\netcoreapp2.2\feeder.csprojAssemblyReference.cache
+C:\Users\pill\source\repos\feeder\feeder\obj\Release\netcoreapp2.2\feeder.csproj.CoreCompileInputs.cache
+C:\Users\pill\source\repos\feeder\feeder\obj\Release\netcoreapp2.2\feeder.AssemblyInfoInputs.cache
+C:\Users\pill\source\repos\feeder\feeder\obj\Release\netcoreapp2.2\feeder.AssemblyInfo.cs
+C:\Users\pill\source\repos\feeder\feeder\obj\Release\netcoreapp2.2\feeder.dll
+C:\Users\pill\source\repos\feeder\feeder\obj\Release\netcoreapp2.2\feeder.pdb

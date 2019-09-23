@@ -1,0 +1,1370 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArchiSteamFarm</name>
+    </assembly>
+    <members>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.ASFController.ASFGet">
+            <summary>
+                Fetches common info related to ASF as a whole.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.ASFController.ASFPost(ArchiSteamFarm.IPC.Requests.ASFRequest)">
+            <summary>
+                Updates ASF's global config.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.ASFController.ExitPost">
+            <summary>
+                Makes ASF shutdown itself.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.ASFController.RestartPost">
+            <summary>
+                Makes ASF restart itself.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.ASFController.UpdatePost">
+            <summary>
+                Makes ASF update itself.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.BotDelete(System.String)">
+            <summary>
+                Deletes all files related to given bots.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.BotGet(System.String)">
+            <summary>
+                Fetches common info related to given bots.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.BotPost(System.String,ArchiSteamFarm.IPC.Requests.BotRequest)">
+            <summary>
+                Updates bot config of given bot.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.GamesToRedeemInBackgroundDelete(System.String)">
+            <summary>
+                Removes BGR output files of given bots.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.GamesToRedeemInBackgroundGet(System.String)">
+            <summary>
+                Fetches BGR output files of given bots.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.GamesToRedeemInBackgroundPost(System.String,ArchiSteamFarm.IPC.Requests.BotGamesToRedeemInBackgroundRequest)">
+            <summary>
+                Adds keys to redeem using BGR to given bot.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.PausePost(System.String,ArchiSteamFarm.IPC.Requests.BotPauseRequest)">
+            <summary>
+                Pauses given bots.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.RedeemPost(System.String,ArchiSteamFarm.IPC.Requests.BotRedeemRequest)">
+            <summary>
+                Redeems cd-keys on given bot.
+            </summary>
+            <remarks>
+                Response contains a map that maps each provided cd-key to its redeem result.
+                Redeem result can be a null value, this means that ASF didn't even attempt to send a request (e.g. because of bot not being connected to Steam network).
+            </remarks>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.RenamePost(System.String,ArchiSteamFarm.IPC.Requests.BotRenameRequest)">
+            <summary>
+                Renames given bot along with all its related files.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.ResumePost(System.String)">
+            <summary>
+                Resumes given bots.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.StartPost(System.String)">
+            <summary>
+                Starts given bots.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.StopPost(System.String)">
+            <summary>
+                Stops given bots.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.TwoFactorAuthenticationConfirmationsAcceptPost(System.String)">
+            <summary>
+                Accepts 2FA confirmations of given bots, requires ASF 2FA module to be active on them.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.TwoFactorAuthenticationConfirmationsCancelPost(System.String)">
+            <summary>
+                Denies 2FA confirmations of given bots, requires ASF 2FA module to be active on them.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.BotController.TwoFactorAuthenticationTokenGet(System.String)">
+            <summary>
+                Fetches 2FA tokens of given bots, requires ASF 2FA module to be active on them.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.CommandController.CommandPost(ArchiSteamFarm.IPC.Requests.CommandRequest)">
+            <summary>
+                Executes a command.
+            </summary>
+            <remarks>
+                This API endpoint is supposed to be entirely replaced by ASF actions available under /Api/ASF/{action} and /Api/Bot/{bot}/{action}.
+                You should use "given bot" commands when executing this endpoint, omitting targets of the command will cause the command to be executed on first defined bot
+            </remarks>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.NLogController.NLogGet">
+            <summary>
+                Fetches ASF log in realtime.
+            </summary>
+            <remarks>
+                This API endpoint requires a websocket connection.
+            </remarks>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.StructureController.StructureGet(System.String)">
+            <summary>
+                Fetches structure of given type.
+            </summary>
+            <remarks>
+                Structure is defined as a representation of given object in its default state.
+            </remarks>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.TypeController.TypeGet(System.String)">
+            <summary>
+                Fetches type info of given type.
+            </summary>
+            <remarks>
+                Type info is defined as a representation of given object with its fields and properties being assigned to a string value that defines their type.
+            </remarks>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.WWWController.DirectoryGet(System.String)">
+            <summary>
+                Fetches files in given directory relative to WWW root.
+            </summary>
+            <remarks>
+                This is internal API being utilizied by our ASF-ui IPC frontend. You should not depend on existence of any /Api/WWW endpoints as they can disappear and change anytime.
+            </remarks>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.WWWController.GitHubReleaseGet">
+            <summary>
+                Fetches the most recent GitHub release of ASF project.
+            </summary>
+            <remarks>
+                This is internal API being utilizied by our ASF-ui IPC frontend. You should not depend on existence of any /Api/WWW endpoints as they can disappear and change anytime.
+            </remarks>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.WWWController.GitHubReleaseGet(System.String)">
+            <summary>
+                Fetches specific GitHub release of ASF project. Use "latest" for latest stable release.
+            </summary>
+            <remarks>
+                This is internal API being utilizied by our ASF-ui IPC frontend. You should not depend on existence of any /Api/WWW endpoints as they can disappear and change anytime.
+            </remarks>
+        </member>
+        <member name="M:ArchiSteamFarm.IPC.Controllers.Api.WWWController.SendPost(ArchiSteamFarm.IPC.Requests.WWWSendRequest)">
+            <summary>
+                Sends a HTTPS request through ASF's built-in HttpClient.
+            </summary>
+            <remarks>
+                This is internal API being utilizied by our ASF-ui IPC frontend. You should not depend on existence of any /Api/WWW endpoints as they can disappear and change anytime.
+            </remarks>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.ASFRequest.GlobalConfig">
+            <summary>
+                ASF's global config structure.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.BotGamesToRedeemInBackgroundRequest.GamesToRedeemInBackground">
+            <summary>
+                A string-string map that maps cd-key to redeem (key) to its name (value).
+            </summary>
+            <remarks>
+                Key in the map must be a valid and unique Steam cd-key.
+                Value in the map must be a non-null and non-empty name of the key (e.g. game's name, but can be anything).
+            </remarks>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.BotPauseRequest.Permanent">
+            <summary>
+                Specifies if pause is permanent or temporary (default).
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.BotPauseRequest.ResumeInSeconds">
+            <summary>
+                Specifies automatic resume action in given seconds. Default value of 0 disables automatic resume.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.BotRedeemRequest.KeysToRedeem">
+            <summary>
+                A collection (set) of keys to redeem.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.BotRenameRequest.NewName">
+            <summary>
+                Specifies the new name for the bot. The new name can't be "ASF", neither the one used by any existing bot.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.BotRequest.BotConfig">
+            <summary>
+                ASF's bot config structure.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.CommandRequest.Command">
+            <summary>
+                Specifies the command that will be executed by ASF.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Requests.WWWSendRequest.URL">
+            <summary>
+                Full URL of the request to be made.
+            </summary>
+            <remarks>
+                URL must start from https:// scheme.
+            </remarks>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.ASFResponse.BuildVariant">
+            <summary>
+                ASF's build variant.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.ASFResponse.GlobalConfig">
+            <summary>
+                Currently loaded ASF's global config.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.ASFResponse.MemoryUsage">
+            <summary>
+                Current amount of managed memory being used by the process, in kilobytes.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.ASFResponse.ProcessStartTime">
+            <summary>
+                Start date of the process.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.ASFResponse.Version">
+            <summary>
+                ASF version of currently running binary.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GamesToRedeemInBackgroundResponse.UnusedKeys">
+            <summary>
+                Keys that were redeemed and not used during the process, if available.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GamesToRedeemInBackgroundResponse.UsedKeys">
+            <summary>
+                Keys that were redeemed and used during the process, if available.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GenericResponse`1.Result">
+            <summary>
+                The actual result of the request, if available.
+            </summary>
+            <remarks>
+                The type of the result depends on the API endpoint that you've called.
+            </remarks>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GenericResponse.Message">
+            <summary>
+                A message that describes what happened with the request, if available.
+            </summary>
+            <remarks>
+                This property will provide exact reason for majority of expected failures.
+            </remarks>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GenericResponse.Success">
+            <summary>
+                Boolean type that specifies if the request has succeeded.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GitHubReleaseResponse.ChangelogHTML">
+            <summary>
+                Changelog of the release rendered in HTML.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GitHubReleaseResponse.ReleasedAt">
+            <summary>
+                Date of the release.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GitHubReleaseResponse.Stable">
+            <summary>
+                Boolean value that specifies whether the build is stable or not (pre-release).
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.GitHubReleaseResponse.Version">
+            <summary>
+                Version of the release.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.TypeResponse.Body">
+            <summary>
+                A string-string map representing a decomposition of given type.
+            </summary>
+            <remarks>
+                The actual structure of this field depends on the type that was requested. You can determine that type based on <see cref="F:ArchiSteamFarm.IPC.Responses.TypeResponse.Properties" /> metadata.
+                For enums, keys are friendly names while values are underlying values of those names.
+                For objects, keys are non-private fields and properties, while values are underlying types of those.
+            </remarks>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.TypeResponse.Properties">
+            <summary>
+                Metadata of given type.
+            </summary>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.TypeResponse.TypeProperties.BaseType">
+            <summary>
+                Base type of given type, if available.
+            </summary>
+            <remarks>
+                This can be used for determining how <see cref="F:ArchiSteamFarm.IPC.Responses.TypeResponse.Body" /> should be interpreted.
+            </remarks>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.TypeResponse.TypeProperties.CustomAttributes">
+            <summary>
+                Custom attributes of given type, if available.
+            </summary>
+            <remarks>
+                This can be used for determining main enum type if <see cref="F:ArchiSteamFarm.IPC.Responses.TypeResponse.TypeProperties.BaseType" /> is <see cref="T:System.Enum" />.
+            </remarks>
+        </member>
+        <member name="F:ArchiSteamFarm.IPC.Responses.TypeResponse.TypeProperties.UnderlyingType">
+            <summary>
+                Underlying type of given type, if available.
+            </summary>
+            <remarks>
+                This can be used for determining underlying enum type if <see cref="F:ArchiSteamFarm.IPC.Responses.TypeResponse.TypeProperties.BaseType" /> is <see cref="T:System.Enum" />.
+            </remarks>
+        </member>
+        <member name="T:ArchiSteamFarm.Localization.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.AcceptingTrade">
+            <summary>
+              Looks up a localized string similar to Accepting trade: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ActivelyMatchingItems">
+            <summary>
+              Looks up a localized string similar to Matching Steam items, round #{0}....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ActivelyMatchingItemsRound">
+            <summary>
+              Looks up a localized string similar to Matched a total of {0} sets this round..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.AutoUpdateCheckInfo">
+            <summary>
+              Looks up a localized string similar to ASF will automatically check for new versions every {0}..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAcceptedDonationTrade">
+            <summary>
+              Looks up a localized string similar to Accepted donation trade: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAcceptingGift">
+            <summary>
+              Looks up a localized string similar to Accepting gift: {0}....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAccountFree">
+            <summary>
+              Looks up a localized string similar to Account is no longer occupied: idling process resumed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAccountLimited">
+            <summary>
+              Looks up a localized string similar to This account is limited, idling process is unavailable until the restriction is removed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAccountLocked">
+            <summary>
+              Looks up a localized string similar to This account is locked, idling process is permanently unavailable!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAccountOccupied">
+            <summary>
+              Looks up a localized string similar to Account is currently being used: ASF will resume idling when it&apos;s free....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAddLicense">
+            <summary>
+              Looks up a localized string similar to ID: {0} | Status: {1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAddLicenseWithItems">
+            <summary>
+              Looks up a localized string similar to ID: {0} | Status: {1} | Items: {2}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAlreadyRunning">
+            <summary>
+              Looks up a localized string similar to This bot is already running!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAlreadyStopped">
+            <summary>
+              Looks up a localized string similar to This bot has already stopped!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAuthenticatorConverting">
+            <summary>
+              Looks up a localized string similar to Converting .maFile into ASF format....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAuthenticatorImportFinished">
+            <summary>
+              Looks up a localized string similar to Successfully finished importing mobile authenticator!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAuthenticatorInvalidDeviceID">
+            <summary>
+              Looks up a localized string similar to Your DeviceID is incorrect or doesn&apos;t exist!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAuthenticatorToken">
+            <summary>
+              Looks up a localized string similar to 2FA Token: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAutomaticIdlingNowPaused">
+            <summary>
+              Looks up a localized string similar to Automatic idling has paused!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAutomaticIdlingNowResumed">
+            <summary>
+              Looks up a localized string similar to Automatic idling has resumed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAutomaticIdlingPausedAlready">
+            <summary>
+              Looks up a localized string similar to Automatic idling is paused already!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotAutomaticIdlingResumedAlready">
+            <summary>
+              Looks up a localized string similar to Automatic idling is resumed already!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotConnected">
+            <summary>
+              Looks up a localized string similar to Connected to Steam!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotConnecting">
+            <summary>
+              Looks up a localized string similar to Connecting....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotConnectionLost">
+            <summary>
+              Looks up a localized string similar to Connection to Steam Network lost. Reconnecting....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotDisconnected">
+            <summary>
+              Looks up a localized string similar to Disconnected from Steam!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotDisconnecting">
+            <summary>
+              Looks up a localized string similar to Disconnecting....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotEncryptedPassword">
+            <summary>
+              Looks up a localized string similar to [{0}] password: {1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotExtraIdlingCooldown">
+            <summary>
+              Looks up a localized string similar to Waiting up to {0} to ensure that we&apos;re free to start idling....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotGamesToRedeemInBackgroundCount">
+            <summary>
+              Looks up a localized string similar to Bot has {0} games remaining in its background queue..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotGeneratingSteamParentalCode">
+            <summary>
+              Looks up a localized string similar to Generating Steam parental code, this can take a while, consider putting it in the config instead....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotHandledConfirmations">
+            <summary>
+              Looks up a localized string similar to Successfully handled {0} confirmations!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotHasNoWallet">
+            <summary>
+              Looks up a localized string similar to Bot has no wallet..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotHeartBeatFailed">
+            <summary>
+              Looks up a localized string similar to Failed to disconnect the client. Abandoning this bot instance!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotInstanceNotStartingBecauseDisabled">
+            <summary>
+              Looks up a localized string similar to Not starting this bot instance because it&apos;s disabled in config file!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotInvalidAuthenticatorDuringLogin">
+            <summary>
+              Looks up a localized string similar to Received TwoFactorCodeMismatch error code {0} times in a row. Either your 2FA credentials are no longer valid, or your clock is out of sync, aborting!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotLevel">
+            <summary>
+              Looks up a localized string similar to Bot has level {0}..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotLoggedOff">
+            <summary>
+              Looks up a localized string similar to Logged off of Steam: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotLoggedOn">
+            <summary>
+              Looks up a localized string similar to Successfully logged on as {0}..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotLoggingIn">
+            <summary>
+              Looks up a localized string similar to Logging in....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotLogonSessionReplaced">
+            <summary>
+              Looks up a localized string similar to This account seems to be used in another ASF instance, which is undefined behaviour, refusing to keep it running!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotLootingFailed">
+            <summary>
+              Looks up a localized string similar to Trade offer failed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotLootingMasterNotDefined">
+            <summary>
+              Looks up a localized string similar to Trade couldn&apos;t be sent because there is no user with master permission defined!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotLootingSuccess">
+            <summary>
+              Looks up a localized string similar to Trade offer sent successfully!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotNoASFAuthenticator">
+            <summary>
+              Looks up a localized string similar to This bot doesn&apos;t have ASF 2FA enabled! Did you forget to import your authenticator as ASF 2FA?.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotNotConnected">
+            <summary>
+              Looks up a localized string similar to This bot instance is not connected!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotNotFound">
+            <summary>
+              Looks up a localized string similar to Couldn&apos;t find any bot named {0}!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotNotOwnedYet">
+            <summary>
+              Looks up a localized string similar to Not owned yet: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotOwnedAlready">
+            <summary>
+              Looks up a localized string similar to Owned already: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotOwnedAlreadyWithName">
+            <summary>
+              Looks up a localized string similar to Owned already: {0} | {1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotOwnsOverviewPerGame">
+            <summary>
+              Looks up a localized string similar to {0}/{1} bots already own game {2}..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotRateLimitExceeded">
+            <summary>
+              Looks up a localized string similar to Rate limit exceeded, we will retry after {0} of cooldown....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotReconnecting">
+            <summary>
+              Looks up a localized string similar to Reconnecting....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotRedeem">
+            <summary>
+              Looks up a localized string similar to Key: {0} | Status: {1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotRedeemWithItems">
+            <summary>
+              Looks up a localized string similar to Key: {0} | Status: {1} | Items: {2}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotRefreshingPackagesData">
+            <summary>
+              Looks up a localized string similar to Refreshing packages data....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotRemovedExpiredLoginKey">
+            <summary>
+              Looks up a localized string similar to Removed expired login key!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotSendingTradeToYourself">
+            <summary>
+              Looks up a localized string similar to You can&apos;t send trade to yourself!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStats">
+            <summary>
+              Looks up a localized string similar to Current memory usage: {0} MB..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusConnecting">
+            <summary>
+              Looks up a localized string similar to Bot is connecting to Steam network..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusIdling">
+            <summary>
+              Looks up a localized string similar to Bot is idling game: {0} ({1}, {2} card drops remaining) from a total of {3} games ({4} cards) left to idle (~{5} remaining)..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusIdlingList">
+            <summary>
+              Looks up a localized string similar to Bot is idling games: {0} from a total of {1} games ({2} cards) left to idle (~{3} remaining)..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusLimited">
+            <summary>
+              Looks up a localized string similar to Bot is limited and can&apos;t drop any cards through idling..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusLocked">
+            <summary>
+              Looks up a localized string similar to Bot is locked and can&apos;t drop any cards through idling..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusNotIdling">
+            <summary>
+              Looks up a localized string similar to Bot is not idling anything..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusNotRunning">
+            <summary>
+              Looks up a localized string similar to Bot is not running..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusOverview">
+            <summary>
+              Looks up a localized string similar to There are {0}/{1} bots running, with total of {2} games ({3} cards) left to idle..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusPaused">
+            <summary>
+              Looks up a localized string similar to Bot is paused or running in manual mode..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStatusPlayingNotAvailable">
+            <summary>
+              Looks up a localized string similar to Bot is currently being used..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotSteamDirectoryInitializationFailed">
+            <summary>
+              Looks up a localized string similar to Could not initialize SteamDirectory: connecting with Steam Network might take much longer than usual!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotStopping">
+            <summary>
+              Looks up a localized string similar to Stopping....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotUnableToLogin">
+            <summary>
+              Looks up a localized string similar to Unable to login to Steam: {0}/{1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotVersion">
+            <summary>
+              Looks up a localized string similar to {0} V{1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.BotWalletBalance">
+            <summary>
+              Looks up a localized string similar to Wallet balance: {0} {1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.CheckingFirstBadgePage">
+            <summary>
+              Looks up a localized string similar to Checking first badge page....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.CheckingOtherBadgePages">
+            <summary>
+              Looks up a localized string similar to Checking other badge pages....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ChosenFarmingAlgorithm">
+            <summary>
+              Looks up a localized string similar to Chosen idling algorithm: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ClearingDiscoveryQueue">
+            <summary>
+              Looks up a localized string similar to Clearing Steam discovery queue #{0}....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Content">
+             <summary>
+               Looks up a localized string similar to Content:
+            {0}.
+             </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Done">
+            <summary>
+              Looks up a localized string similar to Done!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.DoneActivelyMatchingItems">
+            <summary>
+              Looks up a localized string similar to Done matching Steam items, round #{0}..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.DoneClearingDiscoveryQueue">
+            <summary>
+              Looks up a localized string similar to Done clearing Steam discovery queue #{0}..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.EnterCommand">
+            <summary>
+              Looks up a localized string similar to Enter command: .
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorAborted">
+            <summary>
+              Looks up a localized string similar to Aborted!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorAccessDenied">
+            <summary>
+              Looks up a localized string similar to Access denied!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorBotConfigInvalid">
+            <summary>
+              Looks up a localized string similar to Your bot config is invalid. Please verify content of {0} and try again!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorConfigPropertyInvalid">
+            <summary>
+              Looks up a localized string similar to Configured {0} property is invalid: {1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorDatabaseInvalid">
+            <summary>
+              Looks up a localized string similar to Persistent database could not be loaded, if issue persists, please remove {0} in order to recreate the database!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorEarlyFatalExceptionInfo">
+            <summary>
+              Looks up a localized string similar to ASF V{0} has run into fatal exception before core logging module was even able to initialize!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorEarlyFatalExceptionPrint">
+             <summary>
+               Looks up a localized string similar to Exception: {0}() {1}
+            StackTrace:
+            {2}.
+             </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorExitingWithNonZeroErrorCode">
+            <summary>
+              Looks up a localized string similar to Exiting with nonzero error code!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorFailingRequest">
+            <summary>
+              Looks up a localized string similar to Request failing: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorFunctionOnlyInHeadlessMode">
+            <summary>
+              Looks up a localized string similar to This function is available only in headless mode!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorGlobalConfigNotLoaded">
+            <summary>
+              Looks up a localized string similar to Global config could not be loaded. Make sure that {0} exists and is valid! Follow &apos;setting up&apos; guide on the wiki if you&apos;re confused..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorGlobalConfigRemoved">
+            <summary>
+              Looks up a localized string similar to Global config file has been removed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorInvalidCurrentCulture">
+            <summary>
+              Looks up a localized string similar to Your provided CurrentCulture is invalid, ASF will keep running with the default one!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorIsEmpty">
+            <summary>
+              Looks up a localized string similar to {0} is empty!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorIsInvalid">
+            <summary>
+              Looks up a localized string similar to {0} is invalid!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorMobileAuthenticatorInvalidDeviceID">
+            <summary>
+              Looks up a localized string similar to Refusing to execute this function due to invalid DeviceID in ASF 2FA!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorNoBotsDefined">
+            <summary>
+              Looks up a localized string similar to No bots are defined. Did you forget to configure your ASF?.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorObjectIsNull">
+            <summary>
+              Looks up a localized string similar to {0} is null!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorParsingObject">
+            <summary>
+              Looks up a localized string similar to Parsing {0} failed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorRequestFailedTooManyTimes">
+            <summary>
+              Looks up a localized string similar to Request failed after {0} attempts!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorSingleInstanceRequired">
+            <summary>
+              Looks up a localized string similar to ASF process is already running for this working directory, aborting!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorUpdateCheckFailed">
+            <summary>
+              Looks up a localized string similar to Could not check latest version!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorUpdateNoAssetForThisVersion">
+            <summary>
+              Looks up a localized string similar to Could not proceed with update because there is no asset that relates to currently running version! Automatic update to that version is not possible..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorUpdateNoAssets">
+            <summary>
+              Looks up a localized string similar to Could not proceed with an update because that version doesn&apos;t include any assets!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.ErrorUserInputRunningInHeadlessMode">
+            <summary>
+              Looks up a localized string similar to Received a request for user input, but process is running in headless mode!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Executing">
+            <summary>
+              Looks up a localized string similar to Executing....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Exiting">
+            <summary>
+              Looks up a localized string similar to Exiting....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.GamesToIdle">
+            <summary>
+              Looks up a localized string similar to We have a total of {0} games ({1} cards) left to idle (~{2} remaining)....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.GlobalConfigChanged">
+            <summary>
+              Looks up a localized string similar to Global config file has been changed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IdlingFinished">
+            <summary>
+              Looks up a localized string similar to Idling finished!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IdlingFinishedForGame">
+            <summary>
+              Looks up a localized string similar to Finished idling: {0} ({1}) after {2} of playtime!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IdlingFinishedForGames">
+            <summary>
+              Looks up a localized string similar to Finished idling games: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IdlingGameNotPossible">
+            <summary>
+              Looks up a localized string similar to Idling {0} ({1}) is temporarily disabled, as ASF is not able to play that game at the moment..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IdlingStatusForGame">
+            <summary>
+              Looks up a localized string similar to Idling status for {0} ({1}): {2} cards remaining.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IdlingStopped">
+            <summary>
+              Looks up a localized string similar to Idling stopped!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IgnoredPermanentPauseEnabled">
+            <summary>
+              Looks up a localized string similar to Ignoring this request, as permanent pause is enabled!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IgnoringTrade">
+            <summary>
+              Looks up a localized string similar to Ignoring trade: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Initializing">
+            <summary>
+              Looks up a localized string similar to Initializing {0}....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.InteractiveConsoleEnabled">
+            <summary>
+              Looks up a localized string similar to Interactive console is now active, type &apos;c&apos; in order to enter command mode..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.InteractiveConsoleNotAvailable">
+            <summary>
+              Looks up a localized string similar to Interactive console is not available due to missing {0} config property..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IPCConfigChanged">
+            <summary>
+              Looks up a localized string similar to IPC config has been changed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IPCReady">
+            <summary>
+              Looks up a localized string similar to IPC server ready!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.IPCStarting">
+            <summary>
+              Looks up a localized string similar to Starting IPC server....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.LoggingIn">
+            <summary>
+              Looks up a localized string similar to Logging in to {0}....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.NoBotsAreRunning">
+            <summary>
+              Looks up a localized string similar to No bots are running, exiting....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.NothingFound">
+            <summary>
+              Looks up a localized string similar to Nothing found!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.NothingToIdle">
+            <summary>
+              Looks up a localized string similar to We don&apos;t have anything to idle on this account!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.NowIdling">
+            <summary>
+              Looks up a localized string similar to Now idling: {0} ({1}).
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.NowIdlingList">
+            <summary>
+              Looks up a localized string similar to Now idling: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.PlayingNotAvailable">
+            <summary>
+              Looks up a localized string similar to Playing is currently unavailable, we&apos;ll try again later!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.PleaseWait">
+            <summary>
+              Looks up a localized string similar to Please wait....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.PluginLoaded">
+            <summary>
+              Looks up a localized string similar to {0} has been loaded successfully!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.PluginLoading">
+            <summary>
+              Looks up a localized string similar to Loading {0} V{1}....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.PluginsWarning">
+            <summary>
+              Looks up a localized string similar to You&apos;ve loaded one or more of custom plugins into the ASF. Since we&apos;re unable to offer a support for modded setups, please reach the appropriate developers of the plugins that you decided to use in case of any issues..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.RefreshingOurSession">
+            <summary>
+              Looks up a localized string similar to Refreshing our session!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.RejectingTrade">
+            <summary>
+              Looks up a localized string similar to Rejecting trade: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Response">
+            <summary>
+              Looks up a localized string similar to Response: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Restarting">
+            <summary>
+              Looks up a localized string similar to Restarting....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Starting">
+            <summary>
+              Looks up a localized string similar to Starting....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.StillIdling">
+            <summary>
+              Looks up a localized string similar to Still idling: {0} ({1}).
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.StillIdlingList">
+            <summary>
+              Looks up a localized string similar to Still idling: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.StoppedIdling">
+            <summary>
+              Looks up a localized string similar to Stopped idling: {0} ({1}).
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.StoppedIdlingList">
+            <summary>
+              Looks up a localized string similar to Stopped idling: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Success">
+            <summary>
+              Looks up a localized string similar to Success!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.TargetBotNotConnected">
+            <summary>
+              Looks up a localized string similar to Target bot instance is not connected!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.TranslationIncomplete">
+            <summary>
+              Looks up a localized string similar to ASF will attempt to use your preferred {0} culture, but translation in that language was completed only in {1}. Perhaps you could help us improve ASF translation for your language?.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UnknownCommand">
+            <summary>
+              Looks up a localized string similar to Unknown command!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UnlockingParentalAccount">
+            <summary>
+              Looks up a localized string similar to Unlocking parental account....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UnusedKeys">
+            <summary>
+              Looks up a localized string similar to Unused keys: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UpdateCheckingNewVersion">
+            <summary>
+              Looks up a localized string similar to Checking for new version....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UpdateCleanup">
+            <summary>
+              Looks up a localized string similar to Cleaning up old files after update....
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UpdateDownloadingNewVersion">
+            <summary>
+              Looks up a localized string similar to Downloading new version: {0} ({1} MB)... While waiting, consider donating if you appreciate the work being done! :).
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UpdateFinished">
+            <summary>
+              Looks up a localized string similar to Update process finished!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UpdateNewVersionAvailable">
+            <summary>
+              Looks up a localized string similar to New ASF version is available! Consider updating yourself!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UpdateVersionInfo">
+            <summary>
+              Looks up a localized string similar to Local version: {0} | Remote version: {1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UserInputDeviceID">
+            <summary>
+              Looks up a localized string similar to Please enter your mobile authenticator device ID (including &quot;android:&quot;): .
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UserInputSteam2FA">
+            <summary>
+              Looks up a localized string similar to Please enter your 2FA code from your Steam authenticator app: .
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UserInputSteamGuard">
+            <summary>
+              Looks up a localized string similar to Please enter SteamGuard auth code that was sent on your e-mail: .
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UserInputSteamLogin">
+            <summary>
+              Looks up a localized string similar to Please enter your Steam login: .
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UserInputSteamParentalCode">
+            <summary>
+              Looks up a localized string similar to Please enter Steam parental code: .
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UserInputSteamPassword">
+            <summary>
+              Looks up a localized string similar to Please enter your Steam password: .
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.UserInputUnknown">
+            <summary>
+              Looks up a localized string similar to Please enter undocumented value of {0}: .
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningCouldNotCheckBadges">
+            <summary>
+              Looks up a localized string similar to Could not get badges&apos; information, we will try again later!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningCouldNotCheckCardsStatus">
+            <summary>
+              Looks up a localized string similar to Could not check cards status for: {0} ({1}), we will try again later!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningDeprecated">
+            <summary>
+              Looks up a localized string similar to Usage of {0} is deprecated and will be removed in future versions of the program. Please use {1} instead..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningExcessiveBotsCount">
+            <summary>
+              Looks up a localized string similar to You&apos;re running more personal bot accounts than our upper recommended limit ({0}). Be advised that this setup is not supported and might cause various Steam-related issues, including account suspensions. Check out the FAQ for more details..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningFailed">
+            <summary>
+              Looks up a localized string similar to Failed!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningFailedWithError">
+            <summary>
+              Looks up a localized string similar to Failed due to error: {0}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningIdlingGameMismatch">
+            <summary>
+              Looks up a localized string similar to ASF detected ID mismatch for {0} ({1}) and will use ID of {2} instead..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningPreReleaseVersion">
+            <summary>
+              Looks up a localized string similar to You&apos;re using a version that is newer than latest released version for your update channel. Please note that pre-release versions are dedicated to users who know how to report bugs, deal with issues and give feedback - no technical support will be given..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningPrivacyPolicy">
+            <summary>
+              Looks up a localized string similar to Please review our privacy policy section on the wiki if you&apos;re concerned about what ASF is in fact doing!.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningUnknownValuePleaseReport">
+            <summary>
+              Looks up a localized string similar to Received unknown value for {0}, please report this: {1}.
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.WarningWorkaroundTriggered">
+            <summary>
+              Looks up a localized string similar to Workaround for {0} bug has been triggered..
+            </summary>
+        </member>
+        <member name="P:ArchiSteamFarm.Localization.Strings.Welcome">
+            <summary>
+              Looks up a localized string similar to It looks like it&apos;s your first launch of the program, welcome!.
+            </summary>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IASF.OnASFInit(System.Collections.Generic.IReadOnlyDictionary{System.String,Newtonsoft.Json.Linq.JToken})">
+            <summary>
+                ASF will call this method right after global config initialization.
+            </summary>
+            <param name="additionalConfigProperties">Extra config properties made out of <see cref="T:Newtonsoft.Json.JsonExtensionDataAttribute" />. Can be null if no extra properties are found.</param>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBot.OnBotDestroy(ArchiSteamFarm.Bot)">
+            <summary>
+                ASF will call this method after removing its own references from it, e.g. after config removal.
+                You should ensure that you'll remove any of your own references to this bot instance in timely manner.
+                Doing so will allow the garbage collector to dispose the bot afterwards, refraining from doing so will create a "memory leak" by keeping the reference alive.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBot.OnBotInit(ArchiSteamFarm.Bot)">
+            <summary>
+                ASF will call this method after creating the bot object, e.g. after config creation.
+                Bot config is not yet available at this stage. This function will execute only once for every bot object.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotCommand.OnBotCommand(ArchiSteamFarm.Bot,System.UInt64,System.String,System.String[])">
+            <summary>
+                ASF will call this method for unrecognized commands.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <param name="steamID">64-bit long unsigned integer of steamID executing the command.</param>
+            <param name="message">Command message in its raw format, stripped of <see cref="F:ArchiSteamFarm.GlobalConfig.CommandPrefix" />.</param>
+            <param name="args">Pre-parsed message using standard ASF delimiters.</param>
+            <returns>Response to the command, or null/empty (as the task value) if the command isn't handled by this plugin.</returns>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotConnection.OnBotDisconnected(ArchiSteamFarm.Bot,SteamKit2.EResult)">
+            <summary>
+                ASF will call this method when bot gets disconnected from Steam network.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <param name="reason">Reason for disconnection, or <see cref="F:SteamKit2.EResult.OK" /> if the disconnection was initiated by ASF (e.g. as a result of a command).</param>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotConnection.OnBotLoggedOn(ArchiSteamFarm.Bot)">
+            <summary>
+                ASF will call this method when bot successfully connects to Steam network.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotFriendRequest.OnBotFriendRequest(ArchiSteamFarm.Bot,System.UInt64)">
+            <summary>
+                ASF will call this method for unhandled (ignored and rejected) friend requests and Steam group invites received by the bot.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <param name="steamID">64-bit Steam identificator of the user that sent a friend request, or a group that the bot has been invited to.</param>
+            <returns>True if the request should be accepted as part of this plugin, false otherwise.</returns>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotMessage.OnBotMessage(ArchiSteamFarm.Bot,System.UInt64,System.String)">
+            <summary>
+                ASF will call this method for messages that are not commands, so ones that do not start from <see cref="F:ArchiSteamFarm.GlobalConfig.CommandPrefix" />.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <param name="steamID">64-bit long unsigned integer of steamID executing the command.</param>
+            <param name="message">Message in its raw format.</param>
+            <returns>Response to the message, or null/empty (as the task value) for silence.</returns>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotModules.OnBotInitModules(ArchiSteamFarm.Bot,System.Collections.Generic.IReadOnlyDictionary{System.String,Newtonsoft.Json.Linq.JToken})">
+            <summary>
+                ASF will call this method right after bot config initialization.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <param name="additionalConfigProperties">Extra config properties made out of <see cref="T:Newtonsoft.Json.JsonExtensionDataAttribute" />. Can be null if no extra properties are found.</param>
+        </member>
+        <member name="P:ArchiSteamFarm.Plugins.IBotsComparer.BotsComparer">
+            <summary>
+                ASF will use this property for determining the comparer for the bots.
+                Unless you know what you're doing, you should not implement this property yourself and let ASF decide.
+            </summary>
+            <returns>Comparer that will be used for the bots, as well as bot regexes.</returns>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotSteamClient.OnBotSteamCallbacksInit(ArchiSteamFarm.Bot,SteamKit2.CallbackManager)">
+            <summary>
+                ASF will call this method right after custom SK2 client handler initialization in order to allow you listening for callbacks in your own code.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <param name="callbackManager">Callback manager object which can be used for establishing subscriptions to standard and custom callbacks.</param>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotSteamClient.OnBotSteamHandlersInit(ArchiSteamFarm.Bot)">
+            <summary>
+                ASF will call this method right after bot initialization in order to allow you hooking custom SK2 client handlers into the SteamClient.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <returns>Collection of custom client handlers that are supposed to be hooked into the SteamClient by ASF. If you do not require any, just return null.</returns>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotTradeOffer.OnBotTradeOffer(ArchiSteamFarm.Bot,ArchiSteamFarm.Json.Steam.TradeOffer)">
+            <summary>
+                ASF will call this method for unhandled (ignored and rejected) trade offers received by the bot.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <param name="tradeOffer">Trade offer related to this callback.</param>
+            <returns>True if the trade offer should be accepted as part of this plugin, false otherwise.</returns>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IBotTradeOfferResults.OnBotTradeOfferResults(ArchiSteamFarm.Bot,System.Collections.Generic.IReadOnlyCollection{ArchiSteamFarm.Trading.ParseTradeResult})">
+            <summary>
+                ASF will call this method for notifying you about the result of each received trade offer being handled. The method is executed for each batch that can contain 1 or more trade offers.
+            </summary>
+            <param name="bot">Bot object related to this callback.</param>
+            <param name="tradeResults">Trade results related to this callback.</param>
+        </member>
+        <member name="P:ArchiSteamFarm.Plugins.IPlugin.Name">
+            <summary>
+                ASF will use this property as general plugin identifier for the user.
+            </summary>
+            <returns>String that will be used as the name of this plugin.</returns>
+        </member>
+        <member name="P:ArchiSteamFarm.Plugins.IPlugin.Version">
+            <summary>
+                ASF will use this property as version indicator of your plugin to the user.
+                You have a freedom in deciding what versioning you want to use, this is for identification purposes only.
+            </summary>
+            <returns>Version that will be shown to the user when plugin is loaded.</returns>
+        </member>
+        <member name="M:ArchiSteamFarm.Plugins.IPlugin.OnLoaded">
+            <summary>
+                ASF will call this method right after plugin initialization.
+            </summary>
+        </member>
+    </members>
+</doc>
